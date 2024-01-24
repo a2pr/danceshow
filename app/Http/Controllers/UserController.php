@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -11,6 +12,13 @@ class UserController extends Controller
      */
     public function index()
     {
+
+        foreach (Student::all() as $student) {
+            echo $student->name;
+            echo $student->cpf;
+            echo $student->birth_date;
+        }
+
         return view('user', ['user'=>'andres']);
     }
 
