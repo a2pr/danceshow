@@ -16,7 +16,7 @@ class Course extends Model
      *
      * @var array
      */
-    protected $fillable = ['class_name'];
+    protected $fillable = ['course_name'];
 
     public function teacherCourses(): hasMany
     {

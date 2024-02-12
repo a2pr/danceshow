@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('package_definition', function (Blueprint $table) {
+        Schema::create('package_definitions', function (Blueprint $table) {
             $table->id();
             $table->string('type');
             $table->string('name');
             $table->string('description');
-            $table->string('package_duration');
-            $table->integer('package_amount');
+            $table->string('package_duration')->nullable();
+            $table->integer('package_amount')->nullable();
             $table->timestamps();
         });
     }

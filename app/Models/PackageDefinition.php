@@ -10,6 +10,10 @@ class PackageDefinition extends Model
 {
     use HasFactory;
 
+    const ONE_MONTH_INTERVAL = 'P1M';
+    const ONE_WEEK_INTERVAL = 'P1W';
+    const TWO_WEEK_INTERVAL = 'P2W';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -23,8 +27,9 @@ class PackageDefinition extends Model
      * @var array
      */
     protected $attributes = [
-        'type' => 'amount',
-        'package_duration' => 0
+        'type' => 'amount', //interval
+        'package_amount' => 0,
+        'package_duration' => null
     ];
 
     public function packages(): HasMany

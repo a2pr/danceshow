@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\Student::class);
             $table->foreignIdFor(\App\Models\PackageDefinition::class);
-            $table->timestamp('start_date');
-            $table->timestamp('end_date');
-            $table->integer('remaining_amount');
-            $table ->boolean('amount');
+            $table->timestamp('start_date')->nullable();
+            $table->timestamp('end_date')->nullable();
+            $table->integer('remaining_amount')->nullable();
+            $table ->boolean('active');
             $table->timestamps();
         });
     }

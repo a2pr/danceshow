@@ -42,7 +42,7 @@ class Attendance extends Model
 
         static::creating(function ($model) {
             // Set the default value to the current time when creating a new record
-            $model->attendace_date = Carbon::now();
+            $model->attendance_date = Carbon::now();
         });
     }
 }
