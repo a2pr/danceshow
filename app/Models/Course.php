@@ -27,4 +27,9 @@ class Course extends Model
     {
         return $this->hasMany(Attendance::class, 'course_id');
     }
+
+    public function studentCourses(): hasMany
+    {
+        return $this->hasMany(StudentCourse::class, 'course_id');
+    }
 }
