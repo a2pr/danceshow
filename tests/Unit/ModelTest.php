@@ -8,6 +8,7 @@ use App\Models\Event;
 use App\Models\Package;
 use App\Models\PackageDefinition;
 use App\Models\Student;
+use App\Models\StudentCourse;
 use App\Models\Teacher;
 use App\Models\TeacherCourse;
 use DateInterval;
@@ -25,6 +26,9 @@ class ModelTest extends TestCase
         Teacher::truncate();
         Attendance::truncate();
         Event::truncate();
+        Course::truncate();
+        StudentCourse::truncate();
+        TeacherCourse::truncate();
     }
 
     public function testStudentClass()
@@ -169,6 +173,34 @@ class ModelTest extends TestCase
 
         $this->assertEquals($teacher->id, $teacherCourse->teacher_id);
         $this->assertEquals($course->id, $teacherCourse->course_id);
+    }
+
+    public function testStudentCourseRelation()
+    {
+        $student = new Student();
+        $student->name = 'andres';
+        $student->cpf = '705202';
+        $student->phone = '559298404';
+        $student->birthday = '05/04/1995';
+        $student->save();
+
+        $teacher = new Teacher();
+        $teacher->name = 'Erica';
+        $teacher->cpf = '1000';
+        $teacher->save();
+
+        $course = new Course();
+        $course->course_name = 'bachata';
+        $course->save();
+
+        $studentCourse = new StudentCourse();
+        $studentCourse->course_id = $course->id;
+        $studentCourse->student_id = $student->id;
+
+        $studentCourse->save();
+
+        $this->assertEquals($student->id, $studentCourse->student_id);
+        $this->assertEquals($course->id, $studentCourse->course_id);
     }
 
     public function testAttendanceAndTimeRecorded()

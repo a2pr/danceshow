@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('studentCourse', function (Blueprint $table) {
+        Schema::create('student_courses', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Student::class);
             $table->foreignIdFor(\App\Models\Course::class);
