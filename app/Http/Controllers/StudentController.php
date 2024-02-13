@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -21,7 +22,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('student/create');
     }
 
     /**
@@ -29,7 +30,16 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'cpf' => 'required|unique:students,cpf',
+            'phone' => 'required|string|max:15',
+            'birthday' => 'required|date',
+        ]);
+
+        $student = Student::create($request->all());
+
+        return redirect()->route('student.show',['student'=>$student->id])->with('success', 'Student created successfully');
     }
 
     /**
