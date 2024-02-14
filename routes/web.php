@@ -3,6 +3,7 @@
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\TeacherCourseController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +35,6 @@ Route::group(['prefix'=>'student'], function(){
 
 Route::resource('teacher', TeacherController::class);
 Route::resource('course', CourseController::class);
+
+Route::get('/teacher/course/create/{teacher}', [TeacherCourseController::class, 'create']);
+Route::post('/teacher/course/', [TeacherCourseController::class, 'store'])->name('teacher.course.store');
