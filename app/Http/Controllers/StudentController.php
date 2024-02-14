@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class StudentController extends Controller
 {
@@ -39,7 +40,7 @@ class StudentController extends Controller
 
         $student = Student::create($request->all());
 
-        return redirect()->route('student.show',['student'=>$student->id])->with('success', 'Student created successfully');
+        return redirect()->route('student.show', ['student' => $student->id])->with('success', 'Student created successfully');
     }
 
     /**
@@ -55,7 +56,7 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        return view('student/edit', ['student' => $student]);
     }
 
     /**
@@ -63,7 +64,16 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'cpf' => 'required',
+            'phone' => 'required|string|max:15',
+            'birthday' => 'required|date',
+        ]);
+
+        $student->update($data);
+
+        return redirect()->route('student.show', $student)->with('success', 'Student created successfully');
     }
 
     /**
@@ -71,6 +81,7 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        return redirect()->route('student.index')->with('success', 'Student deleted successfully');
     }
 }
