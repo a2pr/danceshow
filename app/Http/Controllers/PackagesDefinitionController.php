@@ -15,7 +15,7 @@ class PackagesDefinitionController extends Controller
     {
         $packageDefinitions = PackageDefinition::all();
 
-        return view('package/define', compact('packageDefinitions'));
+        return view('package/definition/index', compact('packageDefinitions'));
     }
 
     /**
@@ -23,7 +23,7 @@ class PackagesDefinitionController extends Controller
      */
     public function create()
     {
-        //
+        return view('package/definition/create');
     }
 
     /**
@@ -31,7 +31,18 @@ class PackagesDefinitionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'package_amount' => 'required_without_all:package_duration',
+                'package_duration' => 'required_without_all:package_amount',
+                'type'=>'required|string',
+                'name'=>'required|string',
+                'description'=>'required|string'
+            ]
+        );
+        $packageDefinition = PackageDefinition::create($request->all());
+
+        return redirect()->route('package-definition.index')->with('success', 'Package definition created successfully');
     }
 
     /**
