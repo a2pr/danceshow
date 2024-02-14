@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,5 @@ Route::group(['prefix'=>'student'], function(){
     Route::put('/{student}', [StudentController::class, 'update'])->name('student.update');
     Route::delete('/{student}', [StudentController::class, 'destroy'])->name('student.destroy');
 });
+
+Route::resource('teacher', TeacherController::class);
