@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PackageDefinition;
+use App\ViewModels\StudentPackageViewModel;
 use Illuminate\Http\Request;
 
 class PackagesDefinitionController extends Controller
@@ -12,7 +13,9 @@ class PackagesDefinitionController extends Controller
      */
     public function index()
     {
-        dd('here');
+        $packageDefinitions = PackageDefinition::all();
+
+        return view('package/define', compact('packageDefinitions'));
     }
 
     /**

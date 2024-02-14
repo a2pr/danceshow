@@ -3,17 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Package;
+use App\ViewModels\StudentPackageViewModel;
 use Illuminate\Http\Request;
 
 class PackagesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of packages and their student
      */
     public function index()
     {
+        $packages = Package::all();
+        $viewModels = [];
+        foreach ($packages as $el){
+            $viewModel = new StudentPackageViewModel(
+                $el->student()->first()->name,
+                $el->packageDefinition()->first()->type,
+                $el->start_date,
+                $el->end_date,
+                $el->remaining_amount,
+                $el->active,
+            );
+            $viewModels[] = $viewModel;
+        }
 
-        dd('index');
+        return view('package/student-package', compact('viewModels'));
     }
 
     /**

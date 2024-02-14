@@ -34,6 +34,7 @@ Route::group(['prefix'=>'student'], function(){
     Route::get('/update/{student}', [StudentController::class, 'edit'])->name('student.edit');
     Route::get('/{student}', [StudentController::class, 'show'])->name('student.show');
     Route::put('/{student}', [StudentController::class, 'update'])->name('student.update');
+    Route::get('/{student}/packages', [StudentController::class, 'packages'])->name('student.packages');
     Route::delete('/{student}', [StudentController::class, 'destroy'])->name('student.destroy');
 });
 
