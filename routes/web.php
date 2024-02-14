@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
@@ -32,3 +33,4 @@ Route::group(['prefix'=>'student'], function(){
 });
 
 Route::resource('teacher', TeacherController::class);
+Route::resource('course', CourseController::class);
