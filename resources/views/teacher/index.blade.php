@@ -1,3 +1,4 @@
+@include('../default')
 <div>
     @if ($teachers->isEmpty())
         <p>No Teachers available.</p>

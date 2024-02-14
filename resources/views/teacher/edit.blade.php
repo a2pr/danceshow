@@ -1,6 +1,7 @@
 {{--@extends('layouts.app') <!-- Adjust this based on your layout structure -->--}}
 
 {{--@section('content')--}}
+@include('../default')
     <div class="container">
         <h2>Edit Student</h2>
         <form method="POST" action="{{ route('teacher.update',$teacher) }}">

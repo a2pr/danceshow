@@ -1,3 +1,4 @@
+@include('../default')
 <div>
     <div>
         <p>Id: {{ $student->id }}</p>

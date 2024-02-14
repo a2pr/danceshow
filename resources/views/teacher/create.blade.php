@@ -3,6 +3,7 @@
 {{--@extends('layouts.app')--}} <!-- You might need to adjust this based on your layout structure -->
 
 {{--@section('content')--}}
+@include('../default')
     <div class="container">
         <h2>Create Student</h2>
         <form method="post" action="{{ route('teacher.store') }}">
