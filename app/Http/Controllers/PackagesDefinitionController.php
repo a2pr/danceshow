@@ -50,7 +50,7 @@ class PackagesDefinitionController extends Controller
      */
     public function show(PackageDefinition $packageDefinition)
     {
-        dd($packageDefinition);
+        return view('package/definition/show', compact('packageDefinition'));
     }
 
     /**
@@ -58,7 +58,7 @@ class PackagesDefinitionController extends Controller
      */
     public function edit(PackageDefinition $packageDefinition)
     {
-        //
+        return view('package/definition/edit', compact('packageDefinition'));
     }
 
     /**
@@ -66,7 +66,17 @@ class PackagesDefinitionController extends Controller
      */
     public function update(Request $request, PackageDefinition $packageDefinition)
     {
-        //
+        $data = $request->validate( [
+            'package_amount' => 'required_without_all:package_duration',
+            'package_duration' => 'required_without_all:package_amount',
+            'type'=>'required|string',
+            'name'=>'required|string',
+            'description'=>'required|string'
+        ]);
+
+        $packageDefinition->update($data);
+
+        return redirect()->route('package-definition.show', $packageDefinition)->with('success', 'Package definition updated successfully');
     }
 
     /**
@@ -74,6 +84,7 @@ class PackagesDefinitionController extends Controller
      */
     public function destroy(PackageDefinition $packageDefinition)
     {
-        //
+        $packageDefinition->delete();
+        return redirect()->route('package-definition.index')->with('success', 'Package definition deleted successfully');
     }
 }
