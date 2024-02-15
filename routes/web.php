@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PackagesDefinitionController;
@@ -38,6 +39,7 @@ Route::group(['prefix'=>'student'], function(){
     Route::delete('/{student}', [StudentController::class, 'destroy'])->name('student.destroy');
 });
 
+Route::resource('attendance', AttendanceController::class);
 Route::resource('teacher', TeacherController::class);
 Route::resource('course', CourseController::class);
 
