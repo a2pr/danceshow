@@ -42,6 +42,7 @@ Route::resource('teacher', TeacherController::class);
 Route::resource('course', CourseController::class);
 
 Route::resource('package', PackagesController::class);
+Route::get('package/create/student/{student}', [PackagesController::class, 'create']);
 Route::resource('package-definition', PackagesDefinitionController::class);
 
 Route::get('/teacher/course/create/{teacher}', [TeacherCourseController::class, 'create']);
