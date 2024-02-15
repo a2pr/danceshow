@@ -88,7 +88,16 @@ class PackagesController extends Controller
      */
     public function show(Package $package)
     {
-        dd($package);
+        $viewModel = new StudentPackageViewModel(
+            $package->student()->first()->name,
+            $package->packageDefinition()->first()->type,
+            $package->start_date,
+            $package->end_date,
+            $package->remaining_amount,
+            $package->active,
+        );
+
+        return view('package/show', compact('viewModel'));
     }
 
     /**
@@ -96,7 +105,16 @@ class PackagesController extends Controller
      */
     public function edit(Package $package)
     {
-        //
+        $viewModel = new StudentPackageViewModel(
+            $package->student()->first()->name,
+            $package->packageDefinition()->first()->type,
+            $package->start_date,
+            $package->end_date,
+            $package->remaining_amount,
+            $package->active,
+        );
+
+        return view('package/edit', compact('package','viewModel'));
     }
 
     /**
@@ -104,7 +122,22 @@ class PackagesController extends Controller
      */
     public function update(Request $request, Package $package)
     {
-        //
+        $request->validate([
+            'remaining_amount' => 'required_without_all:start_date,end_date',
+            'start_date' => 'required_without_all:remaining_amount',
+            'end_date' => 'required_without_all:remaining_amount'
+        ]);
+        $data = $request->all();
+        if($package->packageDefinition()->first()->type == 'amount'){
+            $package->remaining_amount = $data['remaining_amount'];
+        }else{
+            $package->start_date = $data['start_date'];
+            $package->end_date = $data['end_date'];
+        }
+        $package->active = isset($data['package_active']);
+        $package->save();
+
+        return redirect()->route('package.index')->with('success', 'Package edited successfully');
     }
 
     /**
@@ -112,6 +145,7 @@ class PackagesController extends Controller
      */
     public function destroy(Package $package)
     {
-        //
+        $package->delete();
+        return redirect()->route('package.index')->with('success', 'Package deleted successfully');
     }
 }

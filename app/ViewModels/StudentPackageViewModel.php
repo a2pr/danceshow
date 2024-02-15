@@ -52,4 +52,9 @@ class StudentPackageViewModel
     {
         return $this->package_current_amount;
     }
+
+    public function isAmountType():bool
+    {
+        return $this->getPackageType() == 'amount';
+    }
 }
