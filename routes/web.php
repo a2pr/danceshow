@@ -36,6 +36,9 @@ Route::group(['prefix'=>'student'], function(){
     Route::get('/{student}', [StudentController::class, 'show'])->name('student.show');
     Route::put('/{student}', [StudentController::class, 'update'])->name('student.update');
     Route::get('/{student}/packages', [StudentController::class, 'packages'])->name('student.packages');
+    Route::get('/{student}/course/create', [StudentController::class, 'assign'])->name('student.course.create');
+    Route::post('/{student}/course/create', [StudentController::class, 'assignCourse'])->name('student.course.assign');
+    Route::get('/{student}/course/', [StudentController::class, 'course'])->name('student.course.show');
     Route::delete('/{student}', [StudentController::class, 'destroy'])->name('student.destroy');
 });
 

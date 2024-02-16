@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Student;
+use App\Models\StudentCourse;
+use App\ViewModels\StudentCourseViewModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class StudentController extends Controller
 {
@@ -24,6 +28,49 @@ class StudentController extends Controller
     public function create()
     {
         return view('student/create');
+    }
+
+    public function course(Student $student)
+    {
+        $studentCourses = StudentCourse::where('student_id', $student->id)->get();
+        $studentCourseViewModels = [];
+        foreach ($studentCourses as $el){
+            $studentCourseViewModel = new StudentCourseViewModel(
+                $student->name,
+                ...Course::where('id',$el->course_id)->pluck('course_name')
+            );
+            $studentCourseViewModels [] = $studentCourseViewModel;
+        }
+
+        return view('student/course/index', compact('studentCourseViewModels'));
+    }
+
+    public function assign(Student $student)
+    {
+        $courses = Course::all();
+        return view('student/course/assign', ['student'=> $student, 'courses'=>$courses]);
+    }
+
+    public function assignCourse(Request $request, Student $student)
+    {
+        $request->validate([
+            'student_id' => [
+                'required',
+                Rule::exists('students', 'id'),
+            ],
+            'course_id' => [
+                'required',
+                Rule::exists('courses', 'id'),
+            ],
+        ]);
+        $data = $request->all();
+
+        $record = new StudentCourse();
+        $record->student_id = $data['student_id'];
+        $record->course_id = $data['course_id'];
+        $record->save();
+
+        return redirect()->route('student.course.show', compact('student'))->with(['success', 'Student assign to course']);
     }
 
     /**
