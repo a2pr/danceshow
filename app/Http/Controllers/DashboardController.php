@@ -18,8 +18,11 @@ class DashboardController extends Controller
         $studentsData = $this->facade->getStudentsStats();
         $studentWithPackagesEndingCurrentMonth  = $this->facade->getStudentsWithPackagesEndingCurrentMonth();
         $studentWithPackagesEndingSoon  = $this->facade->getStudentsWithPackagesEndingSoon();
-        dd($studentsData, $studentWithPackagesEndingCurrentMonth,$studentWithPackagesEndingSoon);
 
-        return view('welcome');
+        return view('welcome', [
+            'studentsData' => $studentsData,
+            'studentWithPackagesEndingCurrentMonth' =>$studentWithPackagesEndingCurrentMonth,
+            'studentWithPackagesEndingSoon' =>$studentWithPackagesEndingSoon,
+        ]);
     }
 }

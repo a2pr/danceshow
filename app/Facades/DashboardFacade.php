@@ -9,7 +9,8 @@ use Carbon\Carbon;
 class DashboardFacade
 {
     const REAMING_AMOUNT_SOON = 2;
-    public function getStudentsStats(){
+    public function getStudentsStats(): array
+    {
         return [
             'all' => $this->getStudents(),
             'active' => $this->getActiveStudents(),
@@ -80,12 +81,12 @@ class DashboardFacade
 
         return $studentsWithEndingPackages;
     }
-    private function getStudents()
+    private function getStudents(): int
     {
         return Student::all()->count();
     }
 
-    private function getActiveStudents()
+    private function getActiveStudents(): int
     {
         $students = Student::all();
         $count = 0;
@@ -104,7 +105,7 @@ class DashboardFacade
         return $count;
     }
 
-    private function getInactiveStudents()
+    private function getInactiveStudents(): int
     {
         $students = Student::all();
         $count = 0;
@@ -123,13 +124,12 @@ class DashboardFacade
         return $count;
     }
 
-    private function getStudentsWithoutPackages()
+    private function getStudentsWithoutPackages(): int
     {
         $students = Student::all();
         $count = 0;
         foreach ($students as $student) {
             $packages = $student->packages()->get();
-            //dd($packages->isEmpty());
             if ($packages->isEmpty()) {
                 $count++;
             }
