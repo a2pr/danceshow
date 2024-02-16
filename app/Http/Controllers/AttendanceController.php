@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AttendanceEvent;
 use App\Models\Attendance;
+use App\Models\Course;
+use App\Models\Student;
 use App\ViewModels\AttendanceViewModel;
 use Illuminate\Http\Request;
 
@@ -32,7 +35,9 @@ class AttendanceController extends Controller
      */
     public function create()
     {
-        //
+        $students = Student::all();
+        $courses = Course::all();
+        return view('attendance/create', ['students' => $students, 'courses'=> $courses]);
     }
 
     /**
@@ -40,21 +45,40 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'course_id' => 'required',
+            'student_id' => 'required',
+        ]);
+
+        $data = $request->all();
+        $attendance = new Attendance();
+        $attendance->student_id = $data['student_id'];
+        $attendance->course_id = $data['course_id'];
+
+        $attendance->save();
+        AttendanceEvent::dispatch($attendance);
+        return redirect()->route('attendance.index')->with('success', 'Attendance created successfully');
+        // send event
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Attendance $attendance)
     {
-        //
+        $attendanceViewModel = new AttendanceViewModel(
+            $attendance->student()->first()->name,
+            $attendance->courses()->first()->course_name,
+            $attendance->attendance_date
+        );
+
+        return view('attendance/show',compact('attendanceViewModel'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Attendance $attendance)
     {
         //
     }
@@ -62,7 +86,7 @@ class AttendanceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Attendance $attendance)
     {
         //
     }
@@ -70,8 +94,9 @@ class AttendanceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Attendance $attendance)
     {
-        //
+        $attendance->delete();
+        return redirect()->route('attendance.index')->with('success', 'Attendance deleted successfully');
     }
 }
