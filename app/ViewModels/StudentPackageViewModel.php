@@ -2,6 +2,7 @@
 
 namespace App\ViewModels;
 
+use App\Models\Package;
 use DateTime;
 
 class StudentPackageViewModel
@@ -55,6 +56,6 @@ class StudentPackageViewModel
 
     public function isAmountType():bool
     {
-        return $this->getPackageType() == 'amount';
+        return $this->getPackageType() == Package::AMOUNT_TYPE;
     }
 }

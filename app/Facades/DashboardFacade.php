@@ -34,7 +34,7 @@ class DashboardFacade
                 if ($package->active) {
                     $type = $package->packageDefinition()->first()->type;
                     $package_name = $package->packageDefinition()->first()->name;
-                    if( $type == 'interval'){
+                    if( $type == Package::INTERVAL_TYPE){
                         $end_date = Carbon::parse($package->end_date);
                         if($end_date->format('m') == Carbon::now()->format('m')){
                             $studentsWithEndingPackages[] = [
@@ -64,7 +64,7 @@ class DashboardFacade
                 if ($package->active) {
                     $type = $package->packageDefinition()->first()->type;
                     $package_name = $package->packageDefinition()->first()->name;
-                    if( $type == 'amount'){
+                    if( $type == Package::AMOUNT_TYPE){
                         if($package->remaining_amount <= self::REAMING_AMOUNT_SOON){
                             $studentsWithEndingPackages[] = [
                                 'student_name' => $student->name,
@@ -141,7 +141,7 @@ class DashboardFacade
     {
         return Package::join('package_definitions', function($join){
             $join->on('packages.package_definition_id','=','package_definitions.id')
-                ->where('package_definitions.type', '=','amount');
+                ->where('package_definitions.type', '=',Package::AMOUNT_TYPE);
         })->select('packages.*')
             ->count();
     }
@@ -150,8 +150,9 @@ class DashboardFacade
     {
         return Package::join('package_definitions', function($join){
             $join->on('packages.package_definition_id','=','package_definitions.id')
-                ->where('package_definitions.type', '=','interval');
+                ->where('package_definitions.type', '=',Package::INTERVAL_TYPE);
         })->select('packages.*')
             ->count();
     }
+
 }

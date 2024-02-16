@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Package;
 use App\Models\PackageDefinition;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -27,11 +28,11 @@ class PackageDefinitionFactory extends Factory
         $amount = 0;
         if($isAmount){
             $amount = rand(0,10);
-            $type = 'amount';
+            $type = Package::AMOUNT_TYPE;
         }else{
             $rand_key = array_rand(self::INTERVAL);
             $interval = self::INTERVAL[$rand_key];
-            $type = 'interval';
+            $type = Package::INTERVAL_TYPE;
         }
 
         return [

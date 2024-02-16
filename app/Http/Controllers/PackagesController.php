@@ -67,7 +67,7 @@ class PackagesController extends Controller
         $newPackage = new Package();
         $newPackage->student_id = $data['student_id'];
         $newPackage->package_definition_id = $data['package_definition_id'];
-        if ($packageDefinition->type == 'amount') {
+        if ($packageDefinition->type == Package::AMOUNT_TYPE) {
             $newPackage->remaining_amount = $packageDefinition->package_amount;
         } else {
             $date = new \DateTime();
@@ -128,7 +128,7 @@ class PackagesController extends Controller
             'end_date' => 'required_without_all:remaining_amount'
         ]);
         $data = $request->all();
-        if($package->packageDefinition()->first()->type == 'amount'){
+        if($package->packageDefinition()->first()->type == Package::AMOUNT_TYPE){
             $package->remaining_amount = $data['remaining_amount'];
         }else{
             $package->start_date = $data['start_date'];

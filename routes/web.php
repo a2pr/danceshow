@@ -30,7 +30,7 @@ Route::get('/user', [UserController::class, 'index']);
 Route::group(['prefix'=>'student'], function(){
     Route::get('/', [StudentController::class, 'index']);
     Route::post('/', [StudentController::class, 'store'])->name('student.store');
-    Route::get('/create', [StudentController::class, 'create']);
+    Route::get('/create', [StudentController::class, 'create'])->name('student.create');
     Route::get('/update/{student}', [StudentController::class, 'edit'])->name('student.edit');
     Route::get('/{student}', [StudentController::class, 'show'])->name('student.show');
     Route::put('/{student}', [StudentController::class, 'update'])->name('student.update');

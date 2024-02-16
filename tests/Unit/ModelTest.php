@@ -51,7 +51,7 @@ class ModelTest extends TestCase
         $packageDetails->save();
 
         $this->assertEquals(0, $packageDetails->amount);
-        $this->assertEquals('amount', $packageDetails->type);
+        $this->assertEquals(Package::AMOUNT_TYPE, $packageDetails->type);
     }
 
     public function testPackageDescriptionClassDuration()

@@ -20,7 +20,7 @@ class PackageSeeder extends Seeder
         $packageDefinition = PackageDefinition::factory(5)->create();
         foreach ($packageDefinition as $def){
             $student = Student::inRandomOrder()->first();
-            if($def->type == 'amount'){
+            if($def->type == Package::AMOUNT_TYPE){
                 Package::factory(1)->create([
                     'remaining_amount' => $def->remaining_amount,
                     'start_date' => null,

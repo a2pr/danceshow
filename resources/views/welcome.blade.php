@@ -58,6 +58,9 @@
                 </div>
             </div>
         </div>
+        <div >
+            <a class="btn btn-primary" href="{{route('student.create')}}"> Adicionar novo Aluno</a>
+        </div>
     </div>
     <p>This is the home page content.</p>
 @endsection
