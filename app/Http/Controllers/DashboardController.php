@@ -16,7 +16,10 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $studentsData = $this->facade->getStudentsStats();
-        dd($studentsData);
+        $studentWithPackagesEndingCurrentMonth  = $this->facade->getStudentsWithPackagesEndingCurrentMonth();
+        $studentWithPackagesEndingSoon  = $this->facade->getStudentsWithPackagesEndingSoon();
+        dd($studentsData, $studentWithPackagesEndingCurrentMonth,$studentWithPackagesEndingSoon);
+
         return view('welcome');
     }
 }
