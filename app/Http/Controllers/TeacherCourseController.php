@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Teacher;
 use App\Models\TeacherCourse;
+use App\ViewModels\TeacherCourseViewModel;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -13,10 +14,22 @@ class TeacherCourseController extends Controller
     /**
      * Display a listing of the resource.
      */
-/*    public function index()
+    public function index()
     {
+        $teacherCourse = TeacherCourse::all();
+        $teacherCourseViewModels = [];
 
-    }*/
+        foreach ($teacherCourse as $el){
+            $viewModel = new TeacherCourseViewModel(
+                ...Teacher::where('id',$el->teacher_id)->pluck('name'),
+                ...Course::where('id',$el->course_id)->pluck('course_name')
+            );
+
+            $teacherCourseViewModels[] = $viewModel;
+        }
+
+        return view('teacher/course/index',compact('teacherCourseViewModels'));
+    }
 
     /**
      * Show the form for creating a new resource.
