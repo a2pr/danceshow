@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PackagesDefinitionController;
 use App\Http\Controllers\StudentController;
@@ -23,9 +24,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/user', [UserController::class, 'index']);
 Route::group(['prefix'=>'student'], function(){
