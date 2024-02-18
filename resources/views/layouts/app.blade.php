@@ -17,6 +17,16 @@
 <header>
     <!-- Your header content goes here -->
     @include('layouts.nav')
+    @if(session('success'))
+        <div class="alert alert-success }}">
+            {{ session('success') }}
+        </div>
+    @endif
+    @if(session('warning'))
+        <div class="alert alert-warning }}">
+            {{ session('warning') }}
+        </div>
+    @endif
 </header>
 <div style="margin: auto; width: 60%;">
 

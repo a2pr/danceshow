@@ -2,18 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\CourseFacade;
 use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+    public $facade;
+
+    public function __construct()
+    {
+        $this->facade = new CourseFacade();
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $courses = Course::all();
-        return view('course/index', compact('courses'));
+
+        $courseStat = $this->facade ->getCoursesStats();
+        ///dd($courseStat);
+        return view('course/index', compact('courses', 'courseStat'));
     }
 
     /**
