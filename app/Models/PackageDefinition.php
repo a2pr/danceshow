@@ -27,7 +27,7 @@ class PackageDefinition extends Model
      * @var array
      */
     protected $attributes = [
-        'type' => 'amount', //interval
+        'type' => Package::AMOUNT_TYPE, //interval
         'package_amount' => 0,
         'package_duration' => null
     ];
