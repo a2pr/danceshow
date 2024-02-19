@@ -2,20 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\PackageDefinitionFacade;
 use App\Models\PackageDefinition;
 use App\ViewModels\StudentPackageViewModel;
 use Illuminate\Http\Request;
 
 class PackagesDefinitionController extends Controller
 {
+    private $facade;
+
+    public function __construct()
+    {
+        $this->facade = new PackageDefinitionFacade();
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $packageDefinitions = PackageDefinition::all();
+        $packageDefinitionStats = $this->facade->getPackageDefinitionStats();
 
-        return view('package/definition/index', compact('packageDefinitions'));
+        return view('package/definition/index', compact('packageDefinitions', 'packageDefinitionStats'));
     }
 
     /**
@@ -40,7 +49,7 @@ class PackagesDefinitionController extends Controller
                 'description'=>'required|string'
             ]
         );
-        $packageDefinition = PackageDefinition::create($request->all());
+        PackageDefinition::create($request->all());
 
         return redirect()->route('package-definition.index')->with('success', 'Package definition created successfully');
     }

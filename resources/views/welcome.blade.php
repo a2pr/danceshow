@@ -60,6 +60,8 @@
         </div>
         <div >
             <a class="btn btn-primary" href="{{route('student.create')}}"> Adicionar novo Aluno</a>
+            <a class="btn btn-primary" href="{{route('package-definition.create')}}"> Adicionar novo Pacote</a>
+
         </div>
     </div>
     <p>This is the home page content.</p>

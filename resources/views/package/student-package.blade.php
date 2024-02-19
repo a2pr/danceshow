@@ -1,18 +1,16 @@
-@include('../default')
-<div>
-    @if (empty($viewModels))
-        <p>No packages definition available.</p>
-    @else
-        @foreach ($viewModels as $viewModel)
-            <div>
-                <p>Student name: {{ $viewModel->getStudentName() }}</p>
-                <p>package type: {{ $viewModel->getPackageType() }}</p>
-                <p>Start Date: {{ $viewModel->getPackageStartDate() }}</p>
-                <p>End Date: {{ $viewModel->getPackageEndDate() }}</p>
-                <p>Remaining amount: {{ $viewModel->getPackageCurrentAmount() }}</p>
-                <p>Active: {{ $viewModel->isActive() }}</p>
-            </div>
-            <hr>
-        @endforeach
-    @endif
+@extends('layouts.app')
+@section('title', 'Students Page')
+
+@section('content')
+    <div>
+        <h2>Packages </h2>
+        <div class="row">
+            @if (empty($viewModels))
+                <p>No packages definition available.</p>
+            @else
+                @include('package/layouts/packages', ['viewModel' => $viewModels])
+            @endif
+
+    </div>
 </div>
+@endsection

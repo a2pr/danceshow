@@ -13,6 +13,7 @@ class StudentPackageViewModel
     public ?string $package_end_date;
     public ?int $package_current_amount;
     public bool $active;
+    public ?string $notes = null;
 
     public function __construct(string $student_name, string $package_type, ?string $package_start_date, ?string $package_end_date, ?int $package_current_amount, bool $active)
     {
@@ -57,5 +58,10 @@ class StudentPackageViewModel
     public function isAmountType():bool
     {
         return $this->getPackageType() == Package::AMOUNT_TYPE;
+    }
+
+    public function getNotes(): ?string
+    {
+        return $this->notes;
     }
 }
