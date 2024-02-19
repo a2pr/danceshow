@@ -49,7 +49,7 @@ class PackagesDefinitionController extends Controller
                 'description'=>'required|string'
             ]
         );
-        $packageDefinition = PackageDefinition::create($request->all());
+        PackageDefinition::create($request->all());
 
         return redirect()->route('package-definition.index')->with('success', 'Package definition created successfully');
     }

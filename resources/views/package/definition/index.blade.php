@@ -32,8 +32,11 @@
                                 <p>Type: {{ $packageDefinition->type }}</p>
                                 <p>Name: {{ $packageDefinition->name }}</p>
                                 <p>Description: {{ $packageDefinition->description }}</p>
-                                <p>Package Duration: {{ $packageDefinition->package_duration }}</p>
-                                <p>Package Amount: {{ $packageDefinition->package_amount}}</p>
+                                @if($packageDefinition->type == 'amount')
+                                    <p>Package Amount: {{ $packageDefinition->package_amount}}</p>
+                                @else
+                                    <p>Package Duration: {{ $packageDefinition->package_duration }}</p>
+                                @endif
                             </div>
                         </div>
                     </div>
