@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Package extends Model
 {
     use HasFactory;
-    const AMOUNT_TYPE = 'amount';
-    const INTERVAL_TYPE = 'interval';
+    const AMOUNT_TYPE = PackageDefinition::AMOUNT_TYPE;
+    const INTERVAL_TYPE = PackageDefinition::INTERVAL_TYPE;
 
     /**
      * The attributes that are mass assignable.

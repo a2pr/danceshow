@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class PackageDefinition extends Model
 {
     use HasFactory;
+    const AMOUNT_TYPE = 'amount';
+    const INTERVAL_TYPE = 'interval';
 
     const ONE_MONTH_INTERVAL = 'P1M';
     const ONE_WEEK_INTERVAL = 'P1W';
@@ -35,5 +37,10 @@ class PackageDefinition extends Model
     public function packages(): HasMany
     {
         return $this->hasMany(Package::class);
+    }
+
+    public function isAmountType(): bool
+    {
+        return $this->type == self::AMOUNT_TYPE;
     }
 }

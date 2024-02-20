@@ -5,6 +5,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PackagesDefinitionController;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeacherCourseController;
@@ -52,3 +53,6 @@ Route::resource('package-definition', PackagesDefinitionController::class);
 Route::get('/teacher/course/all', [TeacherCourseController::class, 'index'])->name('teacher.course.index');
 Route::get('/teacher/course/create/{teacher}', [TeacherCourseController::class, 'create']);
 Route::post('/teacher/course/', [TeacherCourseController::class, 'store'])->name('teacher.course.store');
+
+Route::get('/business-info-pdf', [PDFController::class, 'businessPdf'])->name('business.pdf');
+Route::get('/test-pdf', [PDFController::class, 'testPdfView'])->name('test.pdf');

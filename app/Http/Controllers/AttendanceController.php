@@ -18,7 +18,7 @@ class AttendanceController extends Controller
     {
         $attendances = Attendance::all();
         $attendanceViewModels = [];
-        foreach ($attendances as $attendance){
+        foreach ($attendances as $attendance) {
 
             $attendanceViewModel = new AttendanceViewModel(
                 $attendance->student()->first()->name,
@@ -37,7 +37,7 @@ class AttendanceController extends Controller
     {
         $students = Student::all();
         $courses = Course::all();
-        return view('attendance/create', ['students' => $students, 'courses'=> $courses]);
+        return view('attendance/create', ['students' => $students, 'courses' => $courses]);
     }
 
     /**
@@ -51,6 +51,30 @@ class AttendanceController extends Controller
         ]);
 
         $data = $request->all();
+        $student = Student::find($data['student_id']);
+        $studentPackage = $student->packages()->where('active', true)->get()->first();
+        if(empty($studentPackage)){
+            return redirect()->route('attendance.create')
+                ->with('error', 'Attendance creation failed, Student package disabled');
+        }
+
+        $packageDefinition = $studentPackage->packageDefinition()->get()->first();
+
+        if(!$studentPackage->active){
+            return redirect()->route('attendance.create')
+                ->with('error', 'Attendance creation failed, Student package disabled');
+        }
+
+        if ($packageDefinition->isAmountType()) {
+            $newAmount = $studentPackage->remaining_amount - 1;
+            $params = ['remaining_amount' => $newAmount];
+            if ($newAmount == 0) {
+                $params['active'] = 0;
+            }
+
+            $studentPackage->update($params);
+        }
+
         $attendance = new Attendance();
         $attendance->student_id = $data['student_id'];
         $attendance->course_id = $data['course_id'];
@@ -72,7 +96,7 @@ class AttendanceController extends Controller
             $attendance->attendance_date
         );
 
-        return view('attendance/show',compact('attendanceViewModel'));
+        return view('attendance/show', compact('attendanceViewModel'));
     }
 
     /**

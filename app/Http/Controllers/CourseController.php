@@ -22,7 +22,7 @@ class CourseController extends Controller
         $courses = Course::all();
 
         $courseStat = $this->facade ->getCoursesStats();
-        ///dd($courseStat);
+        //dd($courseStat);
         return view('course/index', compact('courses', 'courseStat'));
     }
 
