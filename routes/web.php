@@ -55,3 +55,4 @@ Route::get('/teacher/course/create/{teacher}', [TeacherCourseController::class, 
 Route::post('/teacher/course/', [TeacherCourseController::class, 'store'])->name('teacher.course.store');
 
 Route::get('/business-info-pdf', [PDFController::class, 'businessPdf'])->name('business.pdf');
+Route::get('/test-pdf', [PDFController::class, 'testPdfView'])->name('test.pdf');
