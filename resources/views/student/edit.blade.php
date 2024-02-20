@@ -1,6 +1,7 @@
-{{--@extends('layouts.app') <!-- Adjust this based on your layout structure -->--}}
+@extends('layouts.app')
+@section('title', 'Alunos Page')
 
-{{--@section('content')--}}
+@section('content')
     <div class="container">
         <h2>Edit Student</h2>
         <form method="POST" action="{{ route('student.update',$student) }}">
@@ -25,5 +26,4 @@
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
-{{--
-@endsection--}}
+@endsection

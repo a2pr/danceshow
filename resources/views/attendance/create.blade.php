@@ -19,7 +19,7 @@
             </div>
             <br/>
             <div class="form-group">
-                <label for="course_id">Clase:</label>
+                <label for="course_id">Aula:</label>
                 <select class="form-control" id="course_id" name="course_id">
                     <option value="" disabled selected>Select an option</option>
                     @foreach ($courses as $value )

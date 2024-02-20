@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container">
-        <h2>Create Course</h2>
+        <h2>Criar Aula</h2>
         <div class="col-4">
 
             <form method="post" action="{{ route('course.store') }}">
