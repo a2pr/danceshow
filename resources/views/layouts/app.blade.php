@@ -11,49 +11,34 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
-
+    <style>
+        footer {
+            position: fixed;
+            height: 50px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            margin-bottom: 0px;
+        }
+    </style>
 </head>
-<body style="text-align: center;">
+<body>
 <header>
     <!-- Your header content goes here -->
     @include('layouts.nav')
-    @if(session('success'))
-        <div class="alert alert-success }}">
-            {{ session('success') }}
-        </div>
-    @endif
-    @if(session('warning'))
-        <div class="alert alert-warning }}">
-            {{ session('warning') }}
-        </div>
-    @endif
-    @if(session('error'))
-        <div class="alert alert-danger }}">
-            {{ session('error') }}
-        </div>
-    @endif
-    @if($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('layouts.alert')
 </header>
-<div style="margin: auto; width: 60%;">
-
-
+<div class="my-2 pb-5" style="margin: auto; width: 60%;">
     <main>
         @yield('content')
     </main>
 
-    <footer>
-        <!-- Your footer content goes here -->
-        <p>&copy; 2024 website</p>
-    </footer>
 </div>
+
+<footer class="text-center bg-light">
+    <!-- Your footer content goes here -->
+    <p>&copy; 2024 </p>
+</footer>
 
 </body>
 </html>

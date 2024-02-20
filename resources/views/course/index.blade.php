@@ -26,6 +26,9 @@
                 @endforeach
             @endif
         </div>
+        <div>
+            <a class="btn btn-primary" href="{{route('course.create')}}"> Adicionar nova aula</a>
+        </div>
         <hr/>
         <div>
             Course amount: {{$courseStat['all']}}
