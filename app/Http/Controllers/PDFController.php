@@ -12,18 +12,19 @@ class PDFController extends Controller
 {
     public function businessPdf()
     {
-        list($studentsData, $studentWithPackagesEndingCurrentMonth, $studentWithPackagesEndingSoon, $packageDefinitionStats, $courseStats) = $this->getData();
+        list($studentsData, $studentWithPackagesEndingCurrentMonth, $studentWithPackagesEndingSoon, $packageDefinitionStats, $courseStats, $studentsCreatedCurrentMonth) = $this->getData();
         $now = new DateTime();
 
-        $currentMonthYear =  $now->format('m/Y');
+        $currentMonthYear = $now->format('m/Y');
         $data = [
             'studentsData' => $studentsData,
             'studentWithPackagesEndingCurrentMonth' => $studentWithPackagesEndingCurrentMonth,
             'studentWithPackagesEndingSoon' => $studentWithPackagesEndingSoon,
+            'studentsCreatedCurrentMonth' => $studentsCreatedCurrentMonth,
             'packageDefinitionStats' => $packageDefinitionStats,
             'courseStats' => $courseStats,
             'currentMonthYear' => $currentMonthYear,
-            'currentDate' =>now()
+            'currentDate' => now()
         ];
 
         $pdf = Pdf::loadView('pdfs/business-info', $data);
@@ -34,10 +35,10 @@ class PDFController extends Controller
     public function testPdfView()
     {
 
-        list($studentsData, $studentWithPackagesEndingCurrentMonth, $studentWithPackagesEndingSoon, $packageDefinitionStats, $courseStats) = $this->getData();
+        list($studentsData, $studentWithPackagesEndingCurrentMonth, $studentWithPackagesEndingSoon, $packageDefinitionStats, $courseStats, $studentsCreatedCurrentMonth) = $this->getData();
         $now = new DateTime();
 
-        $currentMonthYear =  $now->format('m/Y');
+        $currentMonthYear = $now->format('m/Y');
 
         $data = [
             'title' => 'Sample PDF',
@@ -45,10 +46,11 @@ class PDFController extends Controller
             'studentsData' => $studentsData,
             'studentWithPackagesEndingCurrentMonth' => $studentWithPackagesEndingCurrentMonth,
             'studentWithPackagesEndingSoon' => $studentWithPackagesEndingSoon,
+            'studentsCreatedCurrentMonth' => $studentsCreatedCurrentMonth,
             'packageDefinitionStats' => $packageDefinitionStats,
             'courseStats' => $courseStats,
             'currentMonthYear' => $currentMonthYear,
-            'currentDate' =>now()
+            'currentDate' => now()
         ];
 
         return view('pdfs/business-info', $data);
@@ -64,12 +66,18 @@ class PDFController extends Controller
         $studentsData = $dashBoardFacade->getStudentsStats();
         $studentWithPackagesEndingCurrentMonth = $dashBoardFacade->getStudentsWithPackagesEndingCurrentMonth();
         $studentWithPackagesEndingSoon = $dashBoardFacade->getStudentsWithPackagesEndingSoon();
-
+        $studentsCreatedCurrentMonth = $dashBoardFacade->getStudentsAddedCurrentMonth();
         $packageDefinitionFacade = new PackageDefinitionFacade();
         $packageDefinitionStats = $packageDefinitionFacade->getPackageDefinitionStats();
 
         $courseFacade = new CourseFacade();
         $courseStats = $courseFacade->getAttendancePerCourse();
-        return array($studentsData, $studentWithPackagesEndingCurrentMonth, $studentWithPackagesEndingSoon, $packageDefinitionStats, $courseStats);
+        return array($studentsData,
+            $studentWithPackagesEndingCurrentMonth,
+            $studentWithPackagesEndingSoon,
+            $packageDefinitionStats,
+            $courseStats,
+            $studentsCreatedCurrentMonth
+        );
     }
 }

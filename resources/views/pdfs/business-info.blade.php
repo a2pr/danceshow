@@ -14,6 +14,7 @@
         <li>Alunos Ativos: {{$studentsData['active']}}</li>
         <li>Alunos Inativos: {{$studentsData['inactive']}}</li>
         <li>Alunos sem pacotes: {{$studentsData['without']}}</li>
+        <li>Alunos adicionados no mes: {{$studentsCreatedCurrentMonth}}</li>
         <li>Pacotes por intervalo: {{$studentsData['package_type']['interval']}}</li>
         <li>Pacotes por aula: {{$studentsData['package_type']['amount']}}</li>
     </ul>
