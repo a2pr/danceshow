@@ -8,7 +8,7 @@
             @csrf
 
             <div class="form-group">
-                <label for="name">Name:</label>
+                <label for="name">Nome:</label>
                 <input type="text" class="form-control" id="name" name="name" value="{{$viewModel->getStudentName()}}" disabled>
             </div>
             <div class="form-group">

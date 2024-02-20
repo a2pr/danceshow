@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Courses Page')
+@section('title', 'Aulas Page')
 
 @section('content')
     <div class="container">
@@ -9,7 +9,7 @@
             <form method="post" action="{{ route('course.store') }}">
                 @csrf
                 <div class="form-group">
-                    <label for="course_name">Name:</label>
+                    <label for="course_name">Nome:</label>
                     <input type="text" class="form-control" id="course_name" name="course_name" required>
                 </div>
                 <br/>

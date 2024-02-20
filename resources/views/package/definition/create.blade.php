@@ -8,7 +8,7 @@
             <form method="post" action="{{ route('package-definition.store') }}">
                 @csrf
                 <div class="form-group">
-                    <label for="name">Name:</label>
+                    <label for="name">Nome:</label>
                     <input type="text" class="form-control" id="name" name="name" required>
                 </div>
                 <br/>

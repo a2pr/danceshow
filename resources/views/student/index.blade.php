@@ -7,11 +7,11 @@
     </div>
 <div class="list-group">
     @if ($students->isEmpty())
-        <p>No students available.</p>
+        <p>No Alunos available.</p>
     @else
         @foreach ($students as $student)
             <div class="list-group-item">
-                <p>Name: {{ $student->name }}</p>
+                <p>Nome: {{ $student->name }}</p>
                 <p>cpf: {{ $student->cpf }}</p>
                 <a class="btn btn-info" href="{{route('student.show',['student'=>$student->id])}}"> show</a>
             </div>

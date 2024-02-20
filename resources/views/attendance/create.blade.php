@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', 'Attendance Page')
+@section('title', 'Frequência Page')
 
 @section('content')
 <div class="row">
-    <h2>Create Attendance</h2>
+    <h2>Create Frequência</h2>
     <div class="col-6">
         <form method="post" action="{{ route('attendance.store') }}">
             @csrf

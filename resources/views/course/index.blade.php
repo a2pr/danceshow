@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', 'Courses Page')
+@section('title', 'Aulas Page')
 
 @section('content')
     <div>
-        <h2>Estatistica courses</h2>
+        <h2>Estatisticas Aulas</h2>
         <div class="row">
             <h4>Desde o comeco</h4>
             <span>Aula com mas frecuencia: {{$courseStat['leaderboard']['max']['course_name']}}</span>
@@ -17,11 +17,11 @@
         <div class="row">
             <h3>Aulas</h3>
             @if ($courses->isEmpty())
-                <p>No students available.</p>
+                <p>No Alunos available.</p>
             @else
                 @foreach ($courses as $course)
                     <div class="col-4">
-                        <p>Course Name: {{ $course->course_name }}</p>
+                        <p>Course Nome: {{ $course->course_name }}</p>
                     </div>
                 @endforeach
             @endif
@@ -37,7 +37,7 @@
                     <div class="col-8">
                         <div class="card">
                             <div class="card-body">
-                                Course Name: {{$index}} <br/>
+                                Course Nome: {{$index}} <br/>
                                 Student amount: {{$course['student_count']}}
                                 <ul>
                                     @foreach($course['students'] as  $students)

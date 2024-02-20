@@ -7,13 +7,13 @@
 </div>
 <div class="list-group">
     @if (empty($attendanceViewModels))
-        <p>No Attendance available.</p>
+        <p>No Frequência available.</p>
     @else
         @foreach ($attendanceViewModels as $attendanceViewModel)
             <div class="list-group-item">
-                <p>Attendance date: {{ $attendanceViewModel->getAttendanceDate() }}</p>
-                <p>student name: {{ $attendanceViewModel->getStudentName() }}</p>
-                <p>course name: {{ $attendanceViewModel->getCourseName() }}</p>
+                <p>Frequência data: {{ $attendanceViewModel->getAttendanceDate() }}</p>
+                <p>student Nome: {{ $attendanceViewModel->getStudentName() }}</p>
+                <p>course Nome: {{ $attendanceViewModel->getCourseName() }}</p>
             </div>
         @endforeach
     @endif

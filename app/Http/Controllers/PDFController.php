@@ -6,19 +6,24 @@ use App\Facades\CourseFacade;
 use App\Facades\DashboardFacade;
 use App\Facades\PackageDefinitionFacade;
 use Barryvdh\DomPDF\Facade\Pdf;
+use DateTime;
 
 class PDFController extends Controller
 {
     public function businessPdf()
     {
         list($studentsData, $studentWithPackagesEndingCurrentMonth, $studentWithPackagesEndingSoon, $packageDefinitionStats, $courseStats) = $this->getData();
+        $now = new DateTime();
 
+        $currentMonthYear =  $now->format('m/Y');
         $data = [
             'studentsData' => $studentsData,
             'studentWithPackagesEndingCurrentMonth' => $studentWithPackagesEndingCurrentMonth,
             'studentWithPackagesEndingSoon' => $studentWithPackagesEndingSoon,
             'packageDefinitionStats' => $packageDefinitionStats,
-            'courseStats' => $courseStats
+            'courseStats' => $courseStats,
+            'currentMonthYear' => $currentMonthYear,
+            'currentDate' =>now()
         ];
 
         $pdf = Pdf::loadView('pdfs/business-info', $data);
@@ -30,6 +35,9 @@ class PDFController extends Controller
     {
 
         list($studentsData, $studentWithPackagesEndingCurrentMonth, $studentWithPackagesEndingSoon, $packageDefinitionStats, $courseStats) = $this->getData();
+        $now = new DateTime();
+
+        $currentMonthYear =  $now->format('m/Y');
 
         $data = [
             'title' => 'Sample PDF',
@@ -38,7 +46,9 @@ class PDFController extends Controller
             'studentWithPackagesEndingCurrentMonth' => $studentWithPackagesEndingCurrentMonth,
             'studentWithPackagesEndingSoon' => $studentWithPackagesEndingSoon,
             'packageDefinitionStats' => $packageDefinitionStats,
-            'courseStats' => $courseStats
+            'courseStats' => $courseStats,
+            'currentMonthYear' => $currentMonthYear,
+            'currentDate' =>now()
         ];
 
         return view('pdfs/business-info', $data);

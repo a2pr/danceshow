@@ -1,15 +1,15 @@
 @include('../default')
 <p>Id: {{ $student->id }}</p>
-<p>Name: {{ $student->name }}</p>
+<p>Nome: {{ $student->name }}</p>
 <p>cpf: {{ $student->cpf }}</p>
 
-<h3>Courses</h3>
+<h3>Aulas</h3>
 @if ($courses->isEmpty())
     <p>No course available.</p>
 @else
     @foreach ($courses as $course)
         <div>
-            <p>Course Name: {{ $course->course_name }}</p>
+            <p>Course Nome: {{ $course->course_name }}</p>
         </div>
 
         <form method="POST" action="{{ route('student.course.assign',$student) }}">

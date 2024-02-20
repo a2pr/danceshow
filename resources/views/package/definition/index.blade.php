@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Students Page')
+@section('title', 'Alunos Page')
 
 @section('content')
     <div>
@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-boy">
                         @foreach ($packageDefinitionStats['packages'] as $index => $el)
-                        Package Name: {{$index}}
+                        Package Nome: {{$index}}
                             <br/>Count: {{$el['count']}}
                             <br/>Type: {{$el['type']}}
                             <br/><br/>
@@ -30,7 +30,7 @@
                         <div class="card">
                             <div class="card-boy">
                                 <p>Type: {{ $packageDefinition->type }}</p>
-                                <p>Name: {{ $packageDefinition->name }}</p>
+                                <p>Nome: {{ $packageDefinition->name }}</p>
                                 <p>Description: {{ $packageDefinition->description }}</p>
                                 @if($packageDefinition->type == 'amount')
                                     <p>Package Amount: {{ $packageDefinition->package_amount}}</p>

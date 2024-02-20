@@ -4,7 +4,7 @@
         <h3>Package definition</h3>
         <p>Id: {{ $packageDefinition->id }}</p>
         <p>Type: {{ $packageDefinition->type }}</p>
-        <p>Name: {{ $packageDefinition->name }}</p>
+        <p>Nome: {{ $packageDefinition->name }}</p>
         <p>Description: {{ $packageDefinition->description }}</p>
         <p>Duration: {{ $packageDefinition->package_duration }}</p>
         <p>Amount: {{ $packageDefinition->package_amount }}</p>

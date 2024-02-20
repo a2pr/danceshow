@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title', 'Courses Page')
+@section('title', 'Aulas Page')
 
 @section('content')
     <div>
         <div>
             <p>Id: {{ $student->id }}</p>
-            <p>Name: {{ $student->name }}</p>
+            <p>Nome: {{ $student->name }}</p>
             <p>cpf: {{ $student->cpf }}</p>
             <h4>Packages assign:    </h4>
             @include('../package/layouts/packages', ['viewModels' => $viewModels])

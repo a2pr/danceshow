@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-boy">
-        <p>Student name: {{ $viewModel->getStudentName() }}</p>
+        <p>Student Nome: {{ $viewModel->getStudentName() }}</p>
         <p>package type: {{ $viewModel->getPackageType() }}</p>
         @if($viewModel->isAmountType())
             <p>Remaining amount: {{ $viewModel->getPackageCurrentAmount() }}</p>
