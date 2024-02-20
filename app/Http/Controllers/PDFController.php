@@ -5,11 +5,7 @@ namespace App\Http\Controllers;
 use App\Facades\CourseFacade;
 use App\Facades\DashboardFacade;
 use App\Facades\PackageDefinitionFacade;
-use App\Models\Package;
-use App\Models\PackageDefinition;
-use App\ViewModels\StudentPackageViewModel;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Http\Request;
 
 class PDFController extends Controller
 {
@@ -61,7 +57,6 @@ class PDFController extends Controller
 
         $packageDefinitionFacade = new PackageDefinitionFacade();
         $packageDefinitionStats = $packageDefinitionFacade->getPackageDefinitionStats();
-
 
         $courseFacade = new CourseFacade();
         $courseStats = $courseFacade->getAttendancePerCourse();
