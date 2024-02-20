@@ -1,15 +1,21 @@
-@include('../default')
-<div>
+@extends('layouts.app')
+@section('title', 'Alunos Page')
+
+@section('content')
+<div class="mb-2">
+    <a class="btn btn-primary" href="{{route('attendance.create')}}">Adicionar frequencia</a>
+</div>
+<div class="list-group">
     @if (empty($attendanceViewModels))
-        <p>No Attendance available.</p>
+        <p>No Frequência available.</p>
     @else
         @foreach ($attendanceViewModels as $attendanceViewModel)
-            <div>
-                <p>Attendance date: {{ $attendanceViewModel->getAttendanceDate() }}</p>
-                <p>student name: {{ $attendanceViewModel->getStudentName() }}</p>
-                <p>course name: {{ $attendanceViewModel->getCourseName() }}</p>
+            <div class="list-group-item">
+                <p>Frequência data: {{ $attendanceViewModel->getAttendanceDate() }}</p>
+                <p>student Nome: {{ $attendanceViewModel->getStudentName() }}</p>
+                <p>course Nome: {{ $attendanceViewModel->getCourseName() }}</p>
             </div>
-            <hr>
         @endforeach
     @endif
 </div>
+@endsection

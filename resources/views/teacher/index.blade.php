@@ -6,7 +6,7 @@
         @foreach ($teachers as $teacher)
             <div>
                 <p>Id: {{ $teacher->id }}</p>
-                <p>Name: {{ $teacher->name }}</p>
+                <p>Nome: {{ $teacher->name }}</p>
                 <p>cpf: {{ $teacher->cpf }}</p>
             </div>
             <hr>

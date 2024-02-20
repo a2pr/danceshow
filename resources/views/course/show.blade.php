@@ -2,7 +2,7 @@
 <div>
     <div>
         <p>Id: {{ $course->id }}</p>
-        <p>Name: {{ $course->course_name }}</p>
+        <p>Nome: {{ $course->course_name }}</p>
 
         <a href="{{ route('course.edit', $course) }}">Edit Course</a>
         <a href="{{ route('course.destroy', $course) }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">

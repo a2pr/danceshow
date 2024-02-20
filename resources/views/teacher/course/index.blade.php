@@ -5,8 +5,8 @@
     @else
         @foreach ($teacherCourseViewModels as $value)
             <div>
-                <p>Teacher Name: {{ $value->getTeacherName() }}</p>
-                <p>Course Name: {{ $value->getCourseName() }}</p>
+                <p>Teacher Nome: {{ $value->getTeacherName() }}</p>
+                <p>Course Nome: {{ $value->getCourseName() }}</p>
             </div>
             <hr>
         @endforeach

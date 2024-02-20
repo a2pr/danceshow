@@ -7,7 +7,7 @@
             @method('PUT')
             @csrf
             <div class="form-group">
-                <label for="course_name">Course name:</label>
+                <label for="course_name">Course Nome:</label>
                 <input type="text" class="form-control" id="course_name" name="course_name" value="{{ $course->course_name }}" required>
             </div>
             <button type="submit" class="btn btn-primary">Update</button>

@@ -1,13 +1,14 @@
-{{--@extends('layouts.app') <!-- Adjust this based on your layout structure -->--}}
+@extends('layouts.app')
+@section('title', 'Alunos Page')
 
-{{--@section('content')--}}
+@section('content')
     <div class="container">
         <h2>Edit Student</h2>
         <form method="POST" action="{{ route('student.update',$student) }}">
             @method('PUT')
             @csrf
             <div class="form-group">
-                <label for="name">Name:</label>
+                <label for="name">Nome:</label>
                 <input type="text" class="form-control" id="name" name="name" value="{{ $student->name }}" required>
             </div>
             <div class="form-group">
@@ -25,5 +26,4 @@
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
-{{--
-@endsection--}}
+@endsection

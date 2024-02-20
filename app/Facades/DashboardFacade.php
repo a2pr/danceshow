@@ -155,4 +155,13 @@ class DashboardFacade
             ->count();
     }
 
+    public function getStudentsAddedCurrentMonth()
+    {
+        $currentMonth = now()->month;
+        $currentYear = now()->year;
+
+        return Student::whereMonth('created_at', $currentMonth)
+            ->whereYear('created_at', $currentYear)->count();
+    }
+
 }
