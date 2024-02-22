@@ -133,6 +133,7 @@ class StudentController extends Controller
                 $el->end_date,
                 $el->remaining_amount,
                 $el->active,
+                $el->created_at
             );
             $viewModels[] = $viewModel;
         }

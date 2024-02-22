@@ -8,7 +8,7 @@
         @else
             @foreach ($studentCourseViewModels as $course)
                 <div>
-                    <p>Student Nome: {{ $course->getStudentName() }}</p>
+                    <p>Nome: {{ $course->getStudentName() }}</p>
                     <p>Course Nome: {{ $course->getCourseName() }}</p>
                 </div>
                 <hr>

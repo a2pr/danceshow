@@ -28,6 +28,7 @@ class PackagesController extends Controller
                 $el->end_date,
                 $el->remaining_amount,
                 $el->active,
+                $el->created_at
             );
             $viewModels[] = $viewModel;
         }
@@ -95,6 +96,7 @@ class PackagesController extends Controller
             $package->end_date,
             $package->remaining_amount,
             $package->active,
+            $package->created_at
         );
 
         return view('package/show', compact('viewModel'));
@@ -112,6 +114,7 @@ class PackagesController extends Controller
             $package->end_date,
             $package->remaining_amount,
             $package->active,
+            $package->created_at
         );
 
         return view('package/edit', compact('package','viewModel'));

@@ -14,8 +14,9 @@ class StudentPackageViewModel
     public ?int $package_current_amount;
     public bool $active;
     public ?string $notes = null;
+    public string $created;
 
-    public function __construct(string $student_name, string $package_type, ?string $package_start_date, ?string $package_end_date, ?int $package_current_amount, bool $active)
+    public function __construct(string $student_name, string $package_type, ?string $package_start_date, ?string $package_end_date, ?int $package_current_amount, bool $active,  string $created, ?string $notes = null)
     {
         $this->student_name = $student_name;
         $this->package_type = $package_type;
@@ -23,6 +24,8 @@ class StudentPackageViewModel
         $this->package_end_date = $package_end_date;
         $this->package_current_amount = $package_current_amount;
         $this->active = $active;
+        $this->notes = $notes;
+        $this->created = $created;
     }
 
     public function getPackageStartDate(): ?string
@@ -63,5 +66,10 @@ class StudentPackageViewModel
     public function getNotes(): ?string
     {
         return $this->notes;
+    }
+
+    public function getCreated(): string
+    {
+        return $this->created;
     }
 }

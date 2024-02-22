@@ -1,7 +1,8 @@
 <div class="card">
     <div class="card-boy">
         <p>Student Nome: {{ $viewModel->getStudentName() }}</p>
-        <p>package type: {{ $viewModel->getPackageType() }}</p>
+        <p>Tipo de Pacote: {{ $viewModel->getPackageType() }}</p>
+        <p>Data de pacote asignado: {{ $viewModel->getCreated() }}</p>
         @if($viewModel->isAmountType())
             <p>Remaining amount: {{ $viewModel->getPackageCurrentAmount() }}</p>
             <p>Notes: {{ $viewModel->getNotes() ?? 'No notes'}}</p>
