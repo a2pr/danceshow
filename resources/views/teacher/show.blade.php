@@ -1,4 +1,7 @@
-@include('../default')
+@extends('layouts.app')
+@section('title', 'Professor')
+
+@section('content')
 <div>
     <div>
         <p>Nome: {{ $teacher->name }}</p>
@@ -15,3 +18,4 @@
     </div>
     <hr>
 </div>
+@endsection

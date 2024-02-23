@@ -1,4 +1,7 @@
-@include('../default')
+@extends('layouts.app')
+@section('title', 'Frequência')
+
+@section('content')
 <div>
     <div>
         <p>Frequência data: {{ $attendanceViewModel->getAttendanceDate() }}</p>
@@ -7,3 +10,4 @@
     </div>
     <hr>
 </div>
+@endsection

@@ -1,4 +1,7 @@
-@include('../default')
+@extends('layouts.app')
+@section('title', 'Professor')
+
+@section('content')
 <div>
     @if ($teachers->isEmpty())
         <p>Nenhum professor disponivel.</p>
@@ -12,3 +15,4 @@
         @endforeach
     @endif
 </div>
+@endsection

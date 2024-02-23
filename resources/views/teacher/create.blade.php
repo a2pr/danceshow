@@ -1,9 +1,7 @@
-<!-- resources/views/students/create.blade.php -->
+@extends('layouts.app')
+@section('title', 'Professor')
 
-{{--@extends('layouts.app')--}} <!-- You might need to adjust this based on your layout structure -->
-
-{{--@section('content')--}}
-@include('../default')
+@section('content')
     <div class="container">
         <h2>Adicionar Aluno</h2>
         <form method="post" action="{{ route('teacher.store') }}">
@@ -19,4 +17,4 @@
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
     </div>
-{{--@endsection--}}
+@endsection

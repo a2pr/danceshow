@@ -1,4 +1,7 @@
-@include('../default')
+@extends('layouts.app')
+@section('title', 'Pacotes')
+
+@section('content')
 <div>
     <div>
         <h3>Definaçao de Pacote</h3>
@@ -20,3 +23,4 @@
     </div>
     <hr>
 </div>
+@endsection

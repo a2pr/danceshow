@@ -1,4 +1,7 @@
-@include('../default')
+@extends('layouts.app')
+@section('title', 'Aulas Page')
+
+@section('content')
 <p>Nome: {{ $teacher->name }}</p>
 <p>cpf: {{ $teacher->cpf }}</p>
 
@@ -22,3 +25,4 @@
 
     @endforeach
 @endif
+@endsection

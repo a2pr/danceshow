@@ -1,4 +1,7 @@
-@include('../default')
+@extends('layouts.app')
+@section('title', 'Pacotes')
+
+@section('content')
 <div>
     <div>
         <p>Nome Aluno: {{ $viewModel->getStudentName() }}</p>
@@ -9,3 +12,4 @@
         <p>Ativo: {{ $viewModel->isActive() }}</p>
     </div>
 </div>
+@endsection

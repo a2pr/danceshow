@@ -1,4 +1,7 @@
-@include('../default')
+@extends('layouts.app')
+@section('title', 'Aulas Page')
+
+@section('content')
 <div>
     <div>
         <p>Nome da Aula: {{ $course->course_name }}</p>
@@ -14,3 +17,4 @@
     </div>
     <hr>
 </div>
+@endsection

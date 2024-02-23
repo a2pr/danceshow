@@ -1,4 +1,7 @@
-@include('../default')
+@extends('layouts.app')
+@section('title', 'Alunos Page')
+
+@section('content')
 <div>
     @if ($packages->isEmpty())
         <p>Nenhuma definiçao de pacote disponivel</p>
@@ -15,3 +18,4 @@
         @endforeach
     @endif
 </div>
+@endsection
