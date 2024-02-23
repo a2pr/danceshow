@@ -3,7 +3,7 @@
 {{--@section('content')--}}
 @include('../default')
     <div class="container">
-        <h2>Edit Student</h2>
+        <h2>Editar Aluno</h2>
         <form method="POST" action="{{ route('teacher.update',$teacher) }}">
             @method('PUT')
             @csrf
@@ -15,7 +15,7 @@
                 <label for="cpf">CPF:</label>
                 <input type="text" class="form-control" id="cpf" name="cpf" value="{{ $teacher->cpf }}" required>
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary">Atualizar</button>
         </form>
     </div>
 {{--

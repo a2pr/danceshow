@@ -1,12 +1,11 @@
 @include('../default')
 <div>
     <div>
-        <p>Id: {{ $course->id }}</p>
-        <p>Nome: {{ $course->course_name }}</p>
+        <p>Nome da Aula: {{ $course->course_name }}</p>
 
-        <a href="{{ route('course.edit', $course) }}">Edit Course</a>
+        <a href="{{ route('course.edit', $course) }}">Editar Aula</a>
         <a href="{{ route('course.destroy', $course) }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
-            Delete Course
+            Apagar Aula
         </a>
         <form id="delete-form" action="{{ route('course.destroy', $course) }}" method="POST" style="display: none;">
             @csrf

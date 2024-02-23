@@ -3,10 +3,10 @@
 
 @section('content')
     <div>
-        <h2>Packages </h2>
+        <h2>Pacote </h2>
         <div class="row">
             @if (empty($viewModels))
-                <p>No packages definition available.</p>
+                <p>Nenhum definiçao de pacote disponivel.</p>
             @else
                 @include('package/layouts/packages', ['viewModel' => $viewModels])
             @endif

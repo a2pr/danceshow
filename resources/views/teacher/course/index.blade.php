@@ -1,12 +1,12 @@
 @include('../default')
 <div>
     @if (empty($teacherCourseViewModels))
-        <p>No Teacher course relation available.</p>
+        <p>Sem items disponiveis</p>
     @else
         @foreach ($teacherCourseViewModels as $value)
             <div>
-                <p>Teacher Nome: {{ $value->getTeacherName() }}</p>
-                <p>Course Nome: {{ $value->getCourseName() }}</p>
+                <p>Nome do Professor: {{ $value->getTeacherName() }}</p>
+                <p>Nome da Aula: {{ $value->getCourseName() }}</p>
             </div>
             <hr>
         @endforeach
