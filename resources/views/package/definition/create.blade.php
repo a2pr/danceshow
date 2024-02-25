@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container">
-        <h2>Create Package</h2>
+        <h2>Adicionar Pacote</h2>
         <div class="col-6">
             <form method="post" action="{{ route('package-definition.store') }}">
                 @csrf
@@ -40,7 +40,7 @@
                     <input type="number" class="form-control" id="package_amount" name="package_amount">
                 </div>
                 <br/>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
         </div>
     </div>

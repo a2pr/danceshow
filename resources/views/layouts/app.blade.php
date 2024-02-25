@@ -37,7 +37,7 @@
 
 <footer class="text-center bg-light">
     <!-- Your footer content goes here -->
-    <p>&copy; 2024 </p>
+    <p>&copy; 2024 Payemas Tech</p>
 </footer>
 
 </body>

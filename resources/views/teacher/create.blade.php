@@ -1,11 +1,9 @@
-<!-- resources/views/students/create.blade.php -->
+@extends('layouts.app')
+@section('title', 'Professor')
 
-{{--@extends('layouts.app')--}} <!-- You might need to adjust this based on your layout structure -->
-
-{{--@section('content')--}}
-@include('../default')
+@section('content')
     <div class="container">
-        <h2>Create Student</h2>
+        <h2>Adicionar Aluno</h2>
         <form method="post" action="{{ route('teacher.store') }}">
             @csrf
             <div class="form-group">
@@ -16,7 +14,7 @@
                 <label for="cpf">CPF:</label>
                 <input type="text" class="form-control" id="cpf" name="cpf" required>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
     </div>
-{{--@endsection--}}
+@endsection

@@ -1,0 +1,7 @@
+.env
+.env.testing
+.git
+Dockerfile
+docker-compose.yml
+tests
+phpunit.xml

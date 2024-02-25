@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Alunos Page')
+@section('title', 'Frequência Page')
 
 @section('content')
 <div class="mb-2">
@@ -7,13 +7,13 @@
 </div>
 <div class="list-group">
     @if (empty($attendanceViewModels))
-        <p>No Frequência available.</p>
+        <p>Nenhuma Frequência disponivel.</p>
     @else
         @foreach ($attendanceViewModels as $attendanceViewModel)
             <div class="list-group-item">
                 <p>Frequência data: {{ $attendanceViewModel->getAttendanceDate() }}</p>
-                <p>student Nome: {{ $attendanceViewModel->getStudentName() }}</p>
-                <p>course Nome: {{ $attendanceViewModel->getCourseName() }}</p>
+                <p>Nome do Aluno: {{ $attendanceViewModel->getStudentName() }}</p>
+                <p>Nome da Aula: {{ $attendanceViewModel->getCourseName() }}</p>
             </div>
         @endforeach
     @endif

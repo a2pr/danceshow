@@ -6,7 +6,7 @@
         <div>
             <p>Nome: {{ $student->name }}</p>
             <p>cpf: {{ $student->cpf }}</p>
-            <h4>Pacote atribuído:    </h4>
+            <h4>Pacote atribuído:</h4>
             @include('../package/layouts/packages', ['viewModels' => $viewModels])
             <hr/>
             <a class="btn btn-primary" href="{{ route('student.edit', $student) }}">Editar Aluno</a>

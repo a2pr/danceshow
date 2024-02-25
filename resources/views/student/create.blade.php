@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', 'Aulas Page')
+@section('title', 'Alunos Page')
 
 @section('content')
     <div class="container">
-        <h2>Create Student</h2>
+        <h2>Adicionar Aluno</h2>
         <div class="col-6">
             <form method="post" action="{{ route('student.store') }}">
                 @csrf
@@ -37,7 +37,7 @@
                     </div>
                 @endif
                 <br/>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
         </div>
     </div>

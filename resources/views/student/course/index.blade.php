@@ -1,15 +1,15 @@
 @extends('layouts.app')
-@section('title', 'Aulas Page')
+@section('title', 'Alunos Page')
 
 @section('content')
     <div>
         @if (empty($studentCourseViewModels))
-            <p>No Alunos available.</p>
+            <p>Nenhum aluno disponivel</p>
         @else
             @foreach ($studentCourseViewModels as $course)
                 <div>
-                    <p>Student Nome: {{ $course->getStudentName() }}</p>
-                    <p>Course Nome: {{ $course->getCourseName() }}</p>
+                    <p>Nome do Aluno: {{ $course->getStudentName() }}</p>
+                    <p>Nome de Aula: {{ $course->getCourseName() }}</p>
                 </div>
                 <hr>
             @endforeach

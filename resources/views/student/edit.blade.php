@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container">
-        <h2>Edit Student</h2>
+        <h2>Editar Aluno</h2>
         <form method="POST" action="{{ route('student.update',$student) }}">
             @method('PUT')
             @csrf
@@ -16,14 +16,14 @@
                 <input type="text" class="form-control" id="cpf" name="cpf" value="{{ $student->cpf }}" required>
             </div>
             <div class="form-group">
-                <label for="phone">Phone:</label>
+                <label for="phone">Telefone:</label>
                 <input type="text" class="form-control" id="phone" name="phone" value="{{ $student->phone }}" required>
             </div>
             <div class="form-group">
-                <label for="birthday">Date of Birth:</label>
+                <label for="birthday">Data de nascimento:</label>
                 <input type="date" class="form-control" id="birthday" name="birthday" value="{{ $student->birthday }}" required>
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary">Atualizar</button>
         </form>
     </div>
 @endsection

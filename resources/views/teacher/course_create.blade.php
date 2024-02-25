@@ -1,15 +1,17 @@
-@include('../default')
-<p>Id: {{ $teacher->id }}</p>
+@extends('layouts.app')
+@section('title', 'Aulas Page')
+
+@section('content')
 <p>Nome: {{ $teacher->name }}</p>
 <p>cpf: {{ $teacher->cpf }}</p>
 
 <h3>Aulas</h3>
 @if ($courses->isEmpty())
-    <p>No course available.</p>
+    <p>Nenhuma aula disponivel.</p>
 @else
     @foreach ($courses as $course)
         <div>
-            <p>Course Nome: {{ $course->course_name }}</p>
+            <p>Nome de Aula: {{ $course->course_name }}</p>
         </div>
 
         <form method="POST" action="{{ route('teacher.course.store') }}">
@@ -17,9 +19,10 @@
 
             <input type="hidden" name="teacher_id" value="{{ $teacher->id }}">
             <input type="hidden" name="course_id" value="{{ $course->id }}">
-            <button type="submit">Assign course to teacher</button>
+            <button type="submit">Atribuir aula</button>
         </form>
         <hr>
 
     @endforeach
 @endif
+@endsection

@@ -7,7 +7,7 @@
     </div>
 <div class="list-group">
     @if ($students->isEmpty())
-        <p>No Alunos available.</p>
+        <p>Sem Alunos disponiveis.</p>
     @else
         @foreach ($students as $student)
             <div class="list-group-item">

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Aulas Page')
+@section('title', 'Professor')
 
 @section('content')
     <div class="container">
@@ -13,7 +13,7 @@
                     <input type="text" class="form-control" id="course_name" name="course_name" required>
                 </div>
                 <br/>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
         </div>
     </div>

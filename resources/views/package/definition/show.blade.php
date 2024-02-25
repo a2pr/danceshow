@@ -1,17 +1,20 @@
-@include('../default')
+@extends('layouts.app')
+@section('title', 'Pacotes')
+
+@section('content')
 <div>
     <div>
-        <h3>Package definition</h3>
+        <h3>Definaçao de Pacote</h3>
         <p>Id: {{ $packageDefinition->id }}</p>
         <p>Type: {{ $packageDefinition->type }}</p>
         <p>Nome: {{ $packageDefinition->name }}</p>
-        <p>Description: {{ $packageDefinition->description }}</p>
-        <p>Duration: {{ $packageDefinition->package_duration }}</p>
-        <p>Amount: {{ $packageDefinition->package_amount }}</p>
+        <p>Descriçao: {{ $packageDefinition->description }}</p>
+        <p>Duraçao: {{ $packageDefinition->package_duration }}</p>
+        <p>Quantidade: {{ $packageDefinition->package_amount }}</p>
 
-        <a href="{{ route('package-definition.edit', $packageDefinition) }}">Edit Package definition</a>
+        <a href="{{ route('package-definition.edit', $packageDefinition) }}">Editar Definaçao de Pacote</a>
         <a href="{{ route('package-definition.destroy', $packageDefinition) }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
-            Delete Package definition
+            Apagar definaçao de Pacote
         </a>
         <form id="delete-form" action="{{ route('package-definition.destroy', $packageDefinition) }}" method="POST" style="display: none;">
             @csrf
@@ -20,3 +23,4 @@
     </div>
     <hr>
 </div>
+@endsection
