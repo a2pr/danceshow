@@ -52,6 +52,11 @@ class CourseFacade
     {
         $result = $resultMonth = $data = [];
         $courses = Course::all();
+
+        if($courses->isEmpty()){
+            return [];
+        }
+
         foreach ($courses as $course) {
             $counts = Attendance::where('course_id', $course->id)->count();
             $result[$course->course_name] = $counts;

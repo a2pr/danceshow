@@ -16,6 +16,9 @@
                     <a class="nav-link" href="{{route('course.index')}}">Aulas</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{route('package-definition.index')}}">Pacotes</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{route('attendance.index')}}">Frequencia</a>
                 </li>
 {{--                <li class="nav-item dropdown">

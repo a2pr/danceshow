@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Facades\PackageDefinitionFacade;
 use App\Models\PackageDefinition;
+use App\ViewModels\PackageDefinitionViewModel;
 use App\ViewModels\StudentPackageViewModel;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,19 @@ class PackagesDefinitionController extends Controller
         $packageDefinitions = PackageDefinition::all();
         $packageDefinitionStats = $this->facade->getPackageDefinitionStats();
 
-        return view('package/definition/index', compact('packageDefinitions', 'packageDefinitionStats'));
+        $packageDefinitionsViewModel = [];
+        foreach ($packageDefinitions as $package) {
+            $view = new PackageDefinitionViewModel(
+                $package->type,
+                $package->name,
+                $package->description,
+                $package->package_duration,
+                $package->package_amount,
+            );
+            $packageDefinitionsViewModel [] = $view;
+        }
+
+        return view('package/definition/index', compact('packageDefinitionsViewModel', 'packageDefinitionStats'));
     }
 
     /**
@@ -44,9 +57,9 @@ class PackagesDefinitionController extends Controller
             [
                 'package_amount' => 'required_without_all:package_duration',
                 'package_duration' => 'required_without_all:package_amount',
-                'type'=>'required|string',
-                'name'=>'required|string',
-                'description'=>'required|string'
+                'type' => 'required|string',
+                'name' => 'required|string',
+                'description' => 'required|string'
             ]
         );
         PackageDefinition::create($request->all());
@@ -75,12 +88,12 @@ class PackagesDefinitionController extends Controller
      */
     public function update(Request $request, PackageDefinition $packageDefinition)
     {
-        $data = $request->validate( [
+        $data = $request->validate([
             'package_amount' => 'required_without_all:package_duration',
             'package_duration' => 'required_without_all:package_amount',
-            'type'=>'required|string',
-            'name'=>'required|string',
-            'description'=>'required|string'
+            'type' => 'required|string',
+            'name' => 'required|string',
+            'description' => 'required|string'
         ]);
 
         $packageDefinition->update($data);

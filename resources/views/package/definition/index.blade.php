@@ -3,7 +3,7 @@
 
 @section('content')
     <div>
-        <h3>Estatisticas Pacotes</h3>
+{{--        <h3>Estatisticas Pacotes</h3>
         <div class="row">
 
             <div class="col mb-3">
@@ -18,24 +18,24 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--}}
         <h3>Definição de pacotes</h3>
         <div class="row">
-            @if ($packageDefinitions->isEmpty())
+            @if (empty($packageDefinitionsViewModel))
                 <p>No pacotes disponiveis.</p>
             @else
-                @foreach ($packageDefinitions as $packageDefinition)
+                @foreach ($packageDefinitionsViewModel as $packageViewModel)
 
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-boy">
-                                <p>Tipo: {{ $packageDefinition->type }}</p>
-                                <p>Nome: {{ $packageDefinition->name }}</p>
-                                <p>Descrição: {{ $packageDefinition->description }}</p>
-                                @if($packageDefinition->type == 'amount')
-                                    <p>Quantidade de aulas: {{ $packageDefinition->package_amount}}</p>
+                                <p>Tipo: {{ $packageViewModel->getType() }}</p>
+                                <p>Nome: {{ $packageViewModel->getName() }}</p>
+                                <p>Descrição: {{ $packageViewModel->getDescription() }}</p>
+                                @if($packageViewModel->type == 'amount')
+                                    <p>Quantidade de aulas: {{ $packageViewModel->getQuantity()}}</p>
                                 @else
-                                    <p>Duração do pacote: {{ $packageDefinition->package_duration }}</p>
+                                    <p>Duração do pacote: {{ $packageViewModel->getDuration() }}</p>
                                 @endif
                             </div>
                         </div>
