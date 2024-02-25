@@ -18,8 +18,8 @@ RUN apt-get update && \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Copy the current directory contents into the container at /var/www/html
-COPY ./ /var/www/html
-
+COPY . /var/www/html
+RUN mv .env.production .env
 
 # Install Laravel dependencies
 RUN composer install --no-scripts --no-interaction --prefer-dist
